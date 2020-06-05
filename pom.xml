@@ -35,14 +35,23 @@
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.3.0</muleVersion>
+						<!-- CloudHub user id and password for deploying to CloudHub -->
 						<username>deoritraining7</username>
 						<password>Ramu@12345</password>
+						<!-- application name will be the name of your mule application-->
 						<applicationName>jenkins-mule-integration</applicationName>
+						<!-- environment in which you will deploy your mule application -->
 						<environment>Sandbox</environment>
+						<!-- Object Store V2 will be the version that will be used. Mule 4 only supports V2 version -->
 						<objectStoreV2>true</objectStoreV2>
-						<region>eu-west-1</region>
-						<workers>1</workers>
-						<workerType>Micro</workerType>
+			            <region>eu-west-1</region>
+			            <workerType>Micro</workerType>
+			            <workers>1</workers>           
+				        <!-- Please, bare in mind that the businessGroup should be the one in which you will deploy your API -->         
+				        <!--     <businessGroup> Mulesoft</businessGroup>             -->
+			            <properties>
+			                <key>value</key>
+			            </properties>
 					</cloudHubDeployment>
 				</configuration>
 	           	<executions>
