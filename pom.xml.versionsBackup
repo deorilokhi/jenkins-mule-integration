@@ -17,6 +17,9 @@
 		<mule.tools.version>1.7</mule.tools.version>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
 	</properties>
+	<distributionManagement>
+	
+	</distributionManagement>
 
 	<build>
 		<plugins>
@@ -25,36 +28,35 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
-
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+				
 					<cloudHubDeployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>4.3.0</muleVersion>
+						<!-- CloudHub user id and password for deploying to CloudHub -->
 						<username>deoritraining7</username>
 						<password>Ramu@12345</password>
+						<!-- application name will be the name of your mule application-->
 						<applicationName>jenkins-mule-integration</applicationName>
+						<!-- environment in which you will deploy your mule application -->
 						<environment>Sandbox</environment>
+						<!-- Object Store V2 will be the version that will be used. Mule 4 only supports V2 version -->
 						<objectStoreV2>true</objectStoreV2>
-						<region>eu-west-1</region>
-						<workers>1</workers>
-						<workerType>Micro</workerType>
+			            <region>eu-west-2</region>
+			            <workerType>Micro</workerType>
+			            <workers>1</workers>           
+				        <!-- Please, bare in mind that the businessGroup should be the one in which you will deploy your API -->         
+				        <!--     <businessGroup> Mulesoft</businessGroup>             -->
+			            <properties>
+			                <key>value</key>
+			            </properties>
 					</cloudHubDeployment>
 				</configuration>
-	           	<executions>
-	               <execution>
-	                  <id>deploy</id>
-	                  <phase>deploy</phase>
-	                  <goals>
-	                     <goal>deploy</goal>
-	                  </goals>
-	               </execution>
-	            </executions>
-				
 			</plugin>
 		</plugins>
 	</build>
@@ -63,7 +65,7 @@
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-http-connector</artifactId>
-            <version>1.5.18</version>
+            <version>1.5.17</version>
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
@@ -73,6 +75,12 @@
             <classifier>mule-plugin</classifier>
         </dependency>
         
+		<!-- https://mvnrepository.com/artifact/org.mule.tools.maven/mule-packager -->
+		<dependency>
+		    <groupId>org.mule.tools.maven</groupId>
+		    <artifactId>mule-packager</artifactId>
+		    <version>3.4.0</version>
+		</dependency>
         
 	</dependencies>
 
